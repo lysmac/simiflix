@@ -1,12 +1,14 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
-import MainContent from "./MainContent";
 
 export default function App() {
   return (
     <AppWrapper>
       <Header />
-      <MainContent />
+      <Main>
+        <Outlet/>
+      </Main>
     </AppWrapper>
   );
 }
@@ -16,3 +18,8 @@ const AppWrapper = styled.div`
   flex-direction: column;
   height: 100%;
 `;
+
+const Main = styled.div`
+background-color: purple;
+height: calc(100vh - 250px);
+`

@@ -1,14 +1,15 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Searchbar from "./Searchbar";
 
-function Header() {
+export default function Header() {
   return (
     <HeaderStyle>
       <Title>Simiflix</Title>
       <SegmentBar>
         <NavItem>Welcome!</NavItem>
         <Searchbar />
-        <NavItem>Watchlist</NavItem>
+        <NavItem><NavLink to="./watchlist">Watchlist</NavLink></NavItem>
       </SegmentBar>
     </HeaderStyle>
   );
@@ -41,4 +42,3 @@ const NavItem = styled.p`
   padding: 2rem;
 `;
 
-export default Header;
