@@ -1,13 +1,18 @@
-import Header from "./Header"
+import styled from "styled-components";
+import Header from "./Header";
+import MainContent from "./MainContent";
 
-function App() {
- 
-
+export default function App() {
   return (
-    <div>
-      <Header/>
-    </div>
-  )
+    <AppWrapper>
+      <Header />
+      <MainContent />
+    </AppWrapper>
+  );
 }
 
-export default App
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
