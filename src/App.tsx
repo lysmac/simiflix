@@ -1,13 +1,25 @@
-import Header from "./Header"
+import { Outlet } from "react-router-dom";
+import styled from "styled-components";
+import Header from "./Header";
 
-function App() {
- 
-
+export default function App() {
   return (
-    <div>
-      <Header/>
-    </div>
-  )
+    <AppWrapper>
+      <Header />
+      <Main>
+        <Outlet/>
+      </Main>
+    </AppWrapper>
+  );
 }
 
-export default App
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Main = styled.div`
+background-color: purple;
+height: calc(100vh - 250px);
+`
