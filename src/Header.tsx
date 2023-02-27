@@ -36,9 +36,13 @@ const SegmentBar = styled.div`
   background-color: #fca311;
   height: 5em;
   width: 100%;
+  
 `;
 const NavItem = styled.p`
   font-size: 2rem;
   padding: 2rem;
+  text-decoration: none;
 `;
+
+
 

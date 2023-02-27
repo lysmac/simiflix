@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Searchbar() {
@@ -7,7 +8,9 @@ export default function Searchbar() {
         <label htmlFor="search">Search Movie</label>
         <div>
           <input type="text" id="search" placeholder="Searchbar" />
-          <SubmitButton type="submit">Go</SubmitButton>
+          <NavLink to="./searchresult">
+            <SubmitButton type="submit">Go</SubmitButton>
+          </NavLink>
         </div>
       </Form>
     </StyledSearchbar>
@@ -23,7 +26,6 @@ const StyledSearchbar = styled.div`
 
 const Form = styled.form`
   display: flex;
-
   flex-direction: column;
   justify-content: center;
 `;
