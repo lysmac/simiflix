@@ -52,12 +52,12 @@ function Content() {
       return (
         <div>
           {<p>Title: {movie.title}</p>}
-          {/* {<p>Tagline: {movie.tagline}</p>}
+          {<p>Tagline: {movie.tagline}</p>}
           {<p>Overview: {movie.overview}</p>}
           <img
             width="200px"
             src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-          /> */}
+          />
 
           <h1>Recommendations</h1>
           <h2>{recommendations.results[0].title}</h2>
