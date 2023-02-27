@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import Content from "./Content";
 import Header from "./Header";
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
     <AppWrapper>
       <Header />
       <Main>
+        <Content />
         <Outlet />
       </Main>
     </AppWrapper>
