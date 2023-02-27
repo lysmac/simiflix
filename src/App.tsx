@@ -22,6 +22,6 @@ const AppWrapper = styled.div`
 `;
 
 const Main = styled.div`
-  background-color: purple;
+  background-color: #14213d;
   height: calc(100vh - 250px);
 `;
