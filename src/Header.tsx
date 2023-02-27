@@ -2,14 +2,19 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Searchbar from "./Searchbar";
 
-export default function Header() {
+export default function Header(props: any) {
   return (
     <HeaderStyle>
       <Title>Simiflix</Title>
       <SegmentBar>
         <NavItem>Welcome!</NavItem>
-        <Searchbar />
-        <NavItem><NavLink to="./watchlist">Watchlist</NavLink></NavItem>
+        <Searchbar
+          isSearched={props.isSearched}
+          setIsSearched={props.setIsSearched}
+        />
+        <NavItem>
+          <NavLink to="./watchlist">Watchlist</NavLink>
+        </NavItem>
       </SegmentBar>
     </HeaderStyle>
   );
@@ -36,13 +41,9 @@ const SegmentBar = styled.div`
   background-color: #fca311;
   height: 5em;
   width: 100%;
-  
 `;
 const NavItem = styled.p`
   font-size: 2rem;
   padding: 2rem;
   text-decoration: none;
 `;
-
-
-

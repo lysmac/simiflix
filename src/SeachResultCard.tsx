@@ -1,23 +1,31 @@
 import styled from "styled-components";
-import image from './assets/defaultPoster.jpg';
 
-export default function SearchResultCard () {
+export default function SearchResultCard(movieData: any) {
+  // console.log(recommendedMovie.results);
+  // console.log(searchedMovie);
+  // console.log(searchedMovie.title);
+
+  // let title: string = searchedMovie.title;
+  // title = recommendedMovie.title;
   return (
     <CardWrapper>
-      <MovieTitle>TITLE</MovieTitle>
-      <img src={image} alt="" />
+      <MovieTitle>  {movieData.movieData.title} </MovieTitle>
+      <img
+        src={`https://image.tmdb.org/t/p/w1280/${movieData.movieData.poster_path}`}
+        alt=""
+      />
       <AddButton>+</AddButton>
     </CardWrapper>
-  )
+  );
 }
 
 const CardWrapper = styled.div`
-width: 15rem;
-display: flex;
-justify-content: center;
-flex-direction: column;
-border: 1px solid black;
-`
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+`;
 
 // const MoviePoster = styled.img`
 // background-image: url('./assets/defaultPoster.jpg');
@@ -26,13 +34,13 @@ border: 1px solid black;
 // `
 
 const MovieTitle = styled.h3`
-color: black;
-font-weight: bold;
-text-align: center;
-`
+  color: black;
+  font-weight: bold;
+  text-align: center;
+`;
 
 const AddButton = styled.button`
-color: green;
-width: 50px;
-height: 30px;
-`
+  color: green;
+  width: 50px;
+  height: 30px;
+`;
