@@ -8,7 +8,7 @@ export default function App() {
   const [recommendations, setRecommendations] = useState(null);
   const [id, setID] = useState("");
   const [isSearched, setIsSearched] = useState(false);
-  const [userSearch, setUserSearch] = useState("pulp fiction");
+  const [userSearch, setUserSearch] = useState("star trek");
 
   useEffect(() => {
     async function callApiForID() {

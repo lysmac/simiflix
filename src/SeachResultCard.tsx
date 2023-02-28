@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
+// TODO: Kolla vilken typ movieData är
 export default function SearchResultCard(movieData: any) {
-  // console.log(recommendedMovie.results);
-  // console.log(searchedMovie);
-  // console.log(searchedMovie.title);
-
-  // let title: string = searchedMovie.title;
-  // title = recommendedMovie.title;
   return (
     <CardWrapper>
       <MovieTitle>  {movieData.movieData.title} </MovieTitle>

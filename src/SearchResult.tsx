@@ -3,32 +3,48 @@ import styled from "styled-components";
 import SearchResultCard from "./SeachResultCard";
 
 export default function SearchResult() {
-  const context: object = useOutletContext();
+  // TODO: Kolla vilken typ context är
+  const context: any = useOutletContext();
 
-  const searchedMovie = context.movie;
-  // const recommendedMovieOne: object = context.recommendation;
-  console.log(context.recommendations.results[0]);
+  let searchedMovie,
+    recommendedMovieOne,
+    recommendedMovieTwo,
+    recommendedMovieThree;
 
-  const recommendedMovieOne = context.recommendations.results[0];
-  const recommendedMovieTwo = context.recommendations.results[1];
-  const recommendedMovieThree = context.recommendations.results[2];
-  return (
-    <Wrapper>
-      <InnerWrapper>
-        <UpperResultContainer>
-          <SearchResultCard movieData={searchedMovie} />
-          <SearchResultCard movieData={recommendedMovieOne} />
-          <SearchResultCard movieData={recommendedMovieTwo} />
-          <SearchResultCard movieData={recommendedMovieThree} />
-        </UpperResultContainer>
-        {/* <LowerResultContainer>
+  if (
+    context.recommendations &&
+    context.movie &&
+    context.recommendations.results &&
+    context.recommendations.results.length >= 3
+  ) {
+    searchedMovie = context.movie;
+    recommendedMovieOne = context.recommendations.results[0];
+    recommendedMovieTwo = context.recommendations.results[1];
+    recommendedMovieThree = context.recommendations.results[2];
+
+    return (
+      <Wrapper>
+        <InnerWrapper>
+          <UpperResultContainer>
+            <SearchResultCard movieData={searchedMovie} />
+            <SearchResultCard movieData={recommendedMovieOne} />
+            <SearchResultCard movieData={recommendedMovieTwo} />
+            <SearchResultCard movieData={recommendedMovieThree} />
+          </UpperResultContainer>
+          {/* <LowerResultContainer>
           <SearchResultCard />
         </LowerResultContainer> */}
-      </InnerWrapper>
-    </Wrapper>
-  );
+        </InnerWrapper>
+      </Wrapper>
+    );
+  } else {
+    return (
+      <Wrapper>
+        <InnerWrapper>Något gick fel</InnerWrapper>
+      </Wrapper>
+    );
+  }
 }
-
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;

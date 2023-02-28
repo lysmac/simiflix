@@ -5,16 +5,14 @@ import Searchbar from "./Searchbar";
 export default function Header(props: any) {
   return (
     <HeaderStyle>
-      <Title>Simiflix</Title>
+      <StyledNavTitle to="/">Simiflix</StyledNavTitle>
       <SegmentBar>
-        <NavItem>Welcome!</NavItem>
+        <H2>Welcome!</H2>
         <Searchbar
           isSearched={props.isSearched}
           setIsSearched={props.setIsSearched}
-        />
-        <NavItem>
-          <NavLink to="./watchlist">Watchlist</NavLink>
-        </NavItem>
+        />{" "}
+        <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
     </HeaderStyle>
   );
@@ -28,12 +26,6 @@ const HeaderStyle = styled.div`
   background-color: #14213d;
 `;
 
-const Title = styled.h1`
-  color: #fca311;
-  font-size: 60px;
-  font-family: rockwell;
-`;
-
 const SegmentBar = styled.div`
   display: flex;
   align-items: center;
@@ -42,8 +34,21 @@ const SegmentBar = styled.div`
   height: 5em;
   width: 100%;
 `;
-const NavItem = styled.p`
+
+const H2 = styled.h2`
+  padding: 2rem;
+`;
+
+const StyledNavLink = styled(NavLink)`
   font-size: 2rem;
   padding: 2rem;
   text-decoration: none;
+`;
+
+const StyledNavTitle = styled(NavLink)`
+  text-decoration: none;
+  color: #fca311;
+  font-size: 60px;
+  font-family: rockwell;
+  padding: 2rem;
 `;
