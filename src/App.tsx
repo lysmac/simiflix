@@ -8,7 +8,7 @@ export default function App() {
   const [recommendations, setRecommendations] = useState(null);
   const [id, setID] = useState("");
   const [isSearched, setIsSearched] = useState(false);
-  const [userSearch, setUserSearch] = useState("star trek");
+  const [userSearch, setUserSearch] = useState("pirates of the caribbean");
 
   useEffect(() => {
     async function callApiForID() {
@@ -17,7 +17,6 @@ export default function App() {
       );
       const result = await response.json();
       setID(result.results[0].id);
-      // console.log(id);
     }
     callApiForID();
   }, [isSearched]);
@@ -29,10 +28,9 @@ export default function App() {
       );
       const result = await response.json();
       setMovie(result);
-      // console.log("Nu hämtar vi filmen!");
     }
     callApiForMovie();
-  }, [isSearched]);
+  }, [id]);
 
   useEffect(() => {
     async function callApiForRecommendations() {
@@ -41,36 +39,9 @@ export default function App() {
       );
       const result = await response.json();
       setRecommendations(result);
-      // console.log("Recommendations found");
-      // console.log(recommendations);
     }
     callApiForRecommendations();
   }, [movie]);
-
-  // TODO: Behöver nog inte ha state, kan ha en tom sträng från början.
-  // function showRightContent() {
-  //   if (isSearched) {
-  //     return (
-  //       <div>
-  //         {<p>Title: {movie.title}</p>}
-  //         {<p>Tagline: {movie.tagline}</p>}
-  //         {<p>Overview: {movie.overview}</p>}
-  //         <img
-  //           width="200px"
-  //           src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
-  //         />
-
-  //         <h1>Recommendations</h1>
-  //         <h2>{recommendations.results[0].title}</h2>
-  //         <h2>{recommendations.results[1].title}</h2>
-  //         <h2>{recommendations.results[2].title}</h2>
-  //       </div>
-  //     );
-  //   }
-  //   if (!isSearched) {
-  //     return <div>You haven't searched yet!</div>;
-  //   }
-  // }
 
   return (
     <AppWrapper>

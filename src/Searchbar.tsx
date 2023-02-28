@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+// TODO: type på props
 export default function Searchbar(props: any) {
   return (
     <StyledSearchbar>
