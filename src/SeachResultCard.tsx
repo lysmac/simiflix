@@ -1,15 +1,27 @@
 import styled from "styled-components";
-import image from './assets/defaultPoster.jpg';
 
 export default function SearchResultCard () {
   return (
     <CardWrapper>
-      <MovieTitle>TITLE</MovieTitle>
-      <img src={image} alt="" />
-      <AddButton>+</AddButton>
+      <MovieTitle>
+        <h1>placeholderTitle</h1>
+        {/* {movie.title} */}
+        </MovieTitle>
+        <img src="./assets/defaultPoster.jpg" alt="" />
+      {/* <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> */}
+      <p>
+        placeholder description
+        {/* {movie.overview} */}
+        </p>
+      <AddButton>
+        +
+        {/* <button onClick={() => onAddToWatchlist(movie)}>Add to Watchlist</button> */}
+        </AddButton>
     </CardWrapper>
   )
 }
+
+
 
 const CardWrapper = styled.div`
 width: 15rem;
