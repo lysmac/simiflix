@@ -2,13 +2,16 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Searchbar from "./Searchbar";
 
-export default function Header() {
+export default function Header(props: any) {
   return (
     <HeaderStyle>
       <StyledNavTitle to="/">Simiflix</StyledNavTitle>
       <SegmentBar>
         <H2>Welcome!</H2>
-        <Searchbar />
+        <Searchbar
+          isSearched={props.isSearched}
+          setIsSearched={props.setIsSearched}
+        />{" "}
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
     </HeaderStyle>
@@ -32,8 +35,9 @@ const SegmentBar = styled.div`
   width: 100%;
 `;
 
-  const H2 = styled.h2`
-  padding: 2rem;`
+const H2 = styled.h2`
+  padding: 2rem;
+`;
 
 const StyledNavLink = styled(NavLink)`
   font-size: 2rem;
@@ -47,5 +51,4 @@ const StyledNavTitle = styled(NavLink)`
   font-size: 60px;
   font-family: rockwell;
   padding: 2rem;
-  `
-
+`;
