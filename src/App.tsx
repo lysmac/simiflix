@@ -2,11 +2,15 @@ import { ContextType, useEffect, useState } from "react";
 import { NavLink, Outlet, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
+import { useLocalStorageState } from "./hooks/useLocalStorageState";
 
 export default function App() {
-  const [movie, setMovie] = useState(null);
-  const [recommendations, setRecommendations] = useState(null);
-  const [id, setID] = useState("");
+  const [movie, setMovie] = useLocalStorageState(0, "movie");
+  const [recommendations, setRecommendations] = useLocalStorageState<string[]>(
+    [],
+    "recommendations"
+  );
+  const [id, setID] = useLocalStorageState(0, "id");
   const [isSearched, setIsSearched] = useState(false);
   const [userSearch, setUserSearch] = useState("pirates of the caribbean");
 
