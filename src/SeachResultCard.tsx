@@ -40,7 +40,7 @@ export default function SearchResultCard({ movieData }: Props) {
             setExist(true);
             context.setWatchlist([
               ...context.watchlist,
-              { title: movieData.title, movieid: movieData.id },
+              { title: movieData.title, movieID: movieData.id },
             ]);
           }
         }}
