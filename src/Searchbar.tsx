@@ -40,18 +40,15 @@ export default function Searchbar(props: any) {
       </Form>
       {searchResults.length > 0 && (
         <ResultsContainer>
-          {searchResults.map((result => (
-            <SearchResultCard key={result.id}>
-              <Poster src={`https://image.tmdb.org/t/p/w185/${result.poster_path}`} />
-              <div>
-                <Title>{result.title}</Title>
-                <Tagline>{result.tagline}</Tagline>
-                <p>hej</p>
-              </div>
-            </SearchResultCard>
-          )))}
+          {searchResults.map(result => (
+          <SearchResultCard
+          key={result.id}
+          title={result.title}
+          poster_path={result.poster_path}
+        />
+        ))}
         </ResultsContainer>
-      )},
+      )}
       {/* <p>Searched is {props.isSearched.toString()}</p> */}
     </StyledSearchbar>
   );

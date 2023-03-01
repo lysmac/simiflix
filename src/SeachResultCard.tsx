@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 // TODO: Kolla vilken typ movieData är
-export default function SearchResultCard(movieData: any) {
+export default function SearchResultCard(props: any) {
   return (
     <CardWrapper>
-      <MovieTitle>  {movieData.movieData.title} </MovieTitle>
+      <MovieTitle>{props.title}</MovieTitle>
       <img
-        src={`https://image.tmdb.org/t/p/w1280/${movieData.movieData.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w1280/${props.poster_path}`}
         alt=""
       />
       <AddButton>+</AddButton>
