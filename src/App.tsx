@@ -62,8 +62,6 @@ export default function App() {
             recommendations,
             setWatchlist,
             watchlist,
-            setIsSearched,
-            isSearched,
           }}
         ></Outlet>
       </Main>
