@@ -18,6 +18,7 @@ interface Props {
 export default function SearchResultCard({ movieData }: Props) {
   const context: any = useOutletContext();
   // const [watchlist, addToWatchlist] = useLocalStorageState([], "watchlist");
+  const [clicked, setClicked] = React.useState(false);
 
   return (
     <CardWrapper>
@@ -28,13 +29,22 @@ export default function SearchResultCard({ movieData }: Props) {
       />
       <button
         onClick={() => {
-          context.addToWatchlist([
-            ...context.watchlist,
-            { Title: movieData.title, movieID: movieData.id },
-          ]);
+          if (clicked) {
+            const updatedWatchlist = context.watchlist.filter(
+              (movie) => movie.movieID !== movieData.id
+            );
+            setClicked(!clicked);
+            context.setWatchlist(updatedWatchlist);
+          } else {
+            context.setWatchlist([
+              ...context.watchlist,
+              { Title: movieData.title, movieID: movieData.id },
+            ]);
+            setClicked(!clicked);
+          }
         }}
       >
-        Add
+        {clicked ? "Remove" : "Add"}{" "}
       </button>{" "}
     </CardWrapper>
   );
