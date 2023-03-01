@@ -17,8 +17,9 @@ interface Props {
 
 export default function SearchResultCard({ movieData }: Props) {
   const context: any = useOutletContext();
-  // const [watchlist, addToWatchlist] = useLocalStorageState([], "watchlist");
-  const [clicked, setClicked] = React.useState(false);
+  const [exist, setExist] = React.useState(() => {
+    return context.watchlist.some((movie) => movie.movieID === movieData.id);
+  });
 
   return (
     <CardWrapper>
@@ -29,23 +30,23 @@ export default function SearchResultCard({ movieData }: Props) {
       />
       <button
         onClick={() => {
-          if (clicked) {
+          if (exist) {
+            setExist(false);
             const updatedWatchlist = context.watchlist.filter(
               (movie) => movie.movieID !== movieData.id
             );
-            setClicked(!clicked);
             context.setWatchlist(updatedWatchlist);
           } else {
+            setExist(true);
             context.setWatchlist([
               ...context.watchlist,
               { Title: movieData.title, movieID: movieData.id },
             ]);
-            setClicked(!clicked);
           }
         }}
       >
-        {clicked ? "Remove" : "Add"}{" "}
-      </button>{" "}
+        {exist ? "Remove" : "Add"}
+      </button>
     </CardWrapper>
   );
 }
