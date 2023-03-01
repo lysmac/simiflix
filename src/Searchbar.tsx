@@ -10,8 +10,7 @@ export default function Searchbar(props: any) {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(props.userSearch);
-          props.setIsSearched(true);
+          <NavLink to="./searchresult" />;
         }}
       >
         <label htmlFor="search">Search Movie</label>
