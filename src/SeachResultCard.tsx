@@ -1,15 +1,41 @@
 import styled from "styled-components";
+import { useLocalStorageState } from "./hooks/useLocalStorageState";
+import React from "react";
+import { useOutletContext } from "react-router-dom";
 
 // TODO: Kolla vilken typ movieData är
-export default function SearchResultCard(movieData: any) {
+
+interface MovieData {
+  title: string;
+  poster_path: string;
+  // add any other properties here that you expect to receive from the API
+}
+
+interface Props {
+  movieData: MovieData;
+}
+
+export default function SearchResultCard({ movieData }: Props) {
+  const context: any = useOutletContext();
+  // const [watchlist, addToWatchlist] = useLocalStorageState([], "watchlist");
+
   return (
     <CardWrapper>
-      <MovieTitle>  {movieData.movieData.title} </MovieTitle>
+      <MovieTitle> {movieData.title} </MovieTitle>
       <img
-        src={`https://image.tmdb.org/t/p/w1280/${movieData.movieData.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w1280/${movieData.poster_path}`}
         alt=""
       />
-      <AddButton>+</AddButton>
+      <button
+        onClick={() => {
+          context.addToWatchlist([
+            ...context.watchlist,
+            { Title: movieData.title, movieID: movieData.id },
+          ]);
+        }}
+      >
+        Add
+      </button>{" "}
     </CardWrapper>
   );
 }
