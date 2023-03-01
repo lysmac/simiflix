@@ -1,11 +1,21 @@
+import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import SearchResultCard from "./SeachResultCard";
 
 export default function WatchList() {
+  // TODO: Kolla vilken typ context är
+  const context: any = useOutletContext();
+  const savedMovies = context.watchlist;
+  console.log(savedMovies);
+
   return (
     <Wrapper>
       <h1>Watchlist goes here</h1>
-      <MoviesWrapper>hej</MoviesWrapper>
+      <MoviesWrapper>
+        {savedMovies.map((movie: any) => {
+          return <div key={movie.id}>Titel:{movie.title}</div>;
+        })}
+      </MoviesWrapper>
     </Wrapper>
   );
 }
@@ -15,7 +25,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #14213d;
+  background-color: white;
+  border: 1px solid red;
 `;
 
 const MoviesWrapper = styled.div`
@@ -24,4 +35,5 @@ const MoviesWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   gap: 3rem;
+  background-color: white;
 `;
