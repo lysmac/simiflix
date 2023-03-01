@@ -1,5 +1,5 @@
-import { ContextType, useEffect, useState } from "react";
-import { NavLink, Outlet, useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
@@ -12,7 +12,7 @@ export default function App() {
   );
   const [id, setID] = useLocalStorageState(0, "id");
   const [isSearched, setIsSearched] = useState(false);
-  const [userSearch, setUserSearch] = useState("pirates of the caribbean");
+  const [userSearch, setUserSearch] = useState("");
 
   useEffect(() => {
     async function callApiForID() {
@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <AppWrapper>
-      <Header isSearched={isSearched} setIsSearched={setIsSearched} />
+      <Header setUserSearch={setUserSearch} setIsSearched={setIsSearched} />
       <Main>
         <Outlet context={{ movie, recommendations }}></Outlet>
       </Main>

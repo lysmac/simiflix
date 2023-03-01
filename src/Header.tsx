@@ -9,8 +9,8 @@ export default function Header(props: any) {
       <SegmentBar>
         <H2>Welcome!</H2>
         <Searchbar
-          isSearched={props.isSearched}
-          setIsSearched={props.setIsSearched}
+        setUserSearch={props.setUserSearch}
+        setIsSearched={props.setIsSearched}
         />{" "}
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
