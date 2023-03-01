@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
 } from "react-router-dom";
 import App from "./App";
 import HowToUse from "./HowToUse";
@@ -24,8 +24,8 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-    //{" "}
-  </React.StrictMode>
+  // <React.StrictMode>
+  <RouterProvider router={router} />
+  //{" "}
+  // </React.StrictMode>
 );

@@ -24,7 +24,7 @@ export default function App() {
       setID(result.results[0].id);
     }
     callApiForID();
-  }, [isSearched]);
+  }, [userSearch]);
 
   useEffect(() => {
     async function callApiForMovie() {
@@ -50,10 +50,21 @@ export default function App() {
 
   return (
     <AppWrapper>
-      <Header setUserSearch={setUserSearch} setIsSearched={setIsSearched} />
+      <Header
+        setUserSearch={setUserSearch}
+        setIsSearched={setIsSearched}
+        userSearch={userSearch}
+      />
       <Main>
         <Outlet
-          context={{ movie, recommendations, setWatchlist, watchlist }}
+          context={{
+            movie,
+            recommendations,
+            setWatchlist,
+            watchlist,
+            setIsSearched,
+            isSearched,
+          }}
         ></Outlet>
       </Main>
     </AppWrapper>

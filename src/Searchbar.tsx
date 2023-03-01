@@ -1,59 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import SearchResultCard from "./SeachResultCard";
 
 // TODO: type på props
 
 export default function Searchbar(props: any) {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<any[]>([])
-
-  // function handleSearchClick() {
-  //   props.setIsSearched(!props.isSearched);
-  //   SearchResult();
-  // }
-
-  async function SearchResult() {
-    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=c0f1190bf24e1f667c8c22a047cfa712&query=${searchQuery}`);
-    const result = await response.json();
-    setSearchResults(result.results)
-    console.log(result);
-  }
-
   return (
     <StyledSearchbar>
-      <Form onSubmit={(e) => {
-        e.preventDefault();
-        SearchResult();
-      }}
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(props.userSearch);
+          props.setIsSearched(true);
+        }}
       >
         <label htmlFor="search">Search Movie</label>
         <div>
-          <input 
-            type="text" 
-            id="search" 
+          <input
+            type="text"
             placeholder="Searchbar"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} />
-        </div> 
-        <SubmitButton>Go</SubmitButton>
+            onChange={(e) => {
+              if (props.setUserSearch) {
+                props.setUserSearch(e.target.value);
+              }
+            }}
+          />
+        </div>
+        <NavLink to="./searchresult">
+          <SubmitButton type="submit">Go</SubmitButton>
+        </NavLink>
       </Form>
-      {searchResults.length > 0 && (
-        <ResultsContainer>
-          {searchResults.map(result => (
-          <SearchResultCard
-          key={result.id}
-          title={result.title}
-          poster_path={result.poster_path}
-        />
-        ))}
-        </ResultsContainer>
-      )}
-      {/* <p>Searched is {props.isSearched.toString()}</p> */}
     </StyledSearchbar>
   );
 }
-
 const StyledSearchbar = styled.div`
   display: flex;
   align-items: center;
@@ -76,7 +55,6 @@ const SubmitButton = styled.button`
   color: #fff;
   font-size: 1rem;
 `;
-
 
 //copy-pasta
 
@@ -111,8 +89,3 @@ const Title = styled.h3`
 const Tagline = styled.p`
   margin: 0;
 `;
-
-
-
-
-
