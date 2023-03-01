@@ -12,7 +12,8 @@ export default function App() {
   );
   const [id, setID] = useLocalStorageState(0, "id");
   const [isSearched, setIsSearched] = useState(false);
-  const [userSearch, setUserSearch] = useState("pirates of the caribbean");
+  const [userSearch, setUserSearch] = useState("titanic");
+  const [watchlist, setWatchlist] = useLocalStorageState([], "watchlist");
 
   useEffect(() => {
     async function callApiForID() {
@@ -51,7 +52,9 @@ export default function App() {
     <AppWrapper>
       <Header isSearched={isSearched} setIsSearched={setIsSearched} />
       <Main>
-        <Outlet context={{ movie, recommendations }}></Outlet>
+        <Outlet
+          context={{ movie, recommendations, setWatchlist, watchlist }}
+        ></Outlet>
       </Main>
     </AppWrapper>
   );
