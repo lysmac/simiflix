@@ -30,7 +30,8 @@ export default function Searchbar(props: HeaderProps) {
     </StyledSearchbar>
   );
 }
-const StyledSearchbar = styled.div``;
+const StyledSearchbar = styled.div`
+margin-right: 6rem`;
 
 const Form = styled.form`
   display: flex;

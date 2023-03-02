@@ -15,7 +15,7 @@ export default function HowToUse() {
         <SectionTitle>Watchlist</SectionTitle>
         <P>
           Like what you see? You can add the movies you find interesting to your watchlist by pressing the add button.
-          You can acces your watchlist in the upper left corner. 
+          You can then acces your watchlist in the upper left corner. 
           
         </P>
       </TextWrapper>
@@ -27,10 +27,7 @@ const Wrapper = styled.div`
   font-family: sans-serif;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
   flex-direction: column;
-  background-color: white;
-  border: #14213d solid 2rem; 
   height: auto;
   `
   const TitleWrapper = styled.div`
@@ -39,7 +36,7 @@ const Wrapper = styled.div`
   `
   
   const TextWrapper = styled.div`
-  width: 25rem;
+  width: 30rem;
   `
   
   const HowToUseTitle = styled.h2`
@@ -48,7 +45,7 @@ const Wrapper = styled.div`
 `
 
 const P = styled.p`
-
+font-size: 18px
 `
 
 const SectionTitle = styled.p`
