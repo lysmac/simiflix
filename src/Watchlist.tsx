@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import SearchResultCard from "./SeachResultCard";
+import WatchlistCard from "./WatchlistCard";
 
 export default function WatchList() {
   // TODO: Kolla vilken typ context är
@@ -10,12 +11,13 @@ export default function WatchList() {
 
   return (
     <Wrapper>
-      <h1>Watchlist goes here</h1>
+      <h1>Watchlist</h1>
       <MoviesWrapper>
         {savedMovies.map((movie: any) => {
           return <div key={movie.id}>Titel:{movie.title}</div>;
         })}
       </MoviesWrapper>
+      <WatchlistCard />
     </Wrapper>
   );
 }
