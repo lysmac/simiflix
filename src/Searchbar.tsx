@@ -26,7 +26,7 @@ export default function Searchbar(props: any) {
           />
         </div>
         <NavLink to="./searchresult">
-          <SubmitButton type="submit">Go</SubmitButton>
+          <SubmitButton type="submit">Search</SubmitButton>
         </NavLink>
       </Form>
     </StyledSearchbar>
@@ -46,8 +46,8 @@ const Form = styled.form`
 `;
 
 const SubmitButton = styled.button`
-  margin: 0.5rem;
-  padding: 0.5rem;
+  margin: 0.3rem;
+  padding: 0.3rem;
   border: none;
   border-radius: 4px;
   background-color: #333;

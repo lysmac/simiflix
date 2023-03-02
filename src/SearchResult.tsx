@@ -53,8 +53,8 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  background-color: white;
-  width: 90%;
+  background-color: #14213d;
+  width: 80%;
   display: flex;
   flex-direction: column;
 `;

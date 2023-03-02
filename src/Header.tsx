@@ -20,7 +20,7 @@ export default function Header(props: any) {
 }
 
 const HeaderStyle = styled.div`
-  height: 250px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

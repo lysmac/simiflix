@@ -3,12 +3,9 @@ import { useLocalStorageState } from "./hooks/useLocalStorageState";
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 
-// TODO: Kolla vilken typ movieData är
-
 interface MovieData {
   title: string;
   poster_path: string;
-  // add any other properties here that you expect to receive from the API
 }
 
 interface Props {
@@ -24,29 +21,28 @@ export default function SearchResultCard({ movieData }: Props) {
   return (
     <CardWrapper>
       <MovieTitle> {movieData.title} </MovieTitle>
-      <img
-        src={`https://image.tmdb.org/t/p/w1280/${movieData.poster_path}`}
-        alt=""
-      />
-      <button
-        onClick={() => {
-          if (exist) {
-            setExist(false);
-            const updatedWatchlist = context.watchlist.filter(
-              (movie) => movie.movieID !== movieData.id
-            );
-            context.setWatchlist(updatedWatchlist);
-          } else {
-            setExist(true);
-            context.setWatchlist([
-              ...context.watchlist,
-              { Title: movieData.title, movieID: movieData.id },
-            ]);
-          }
+      <MoviePoster
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movieData.poster_path})`,
         }}
       >
-        {exist ? "Remove" : "Add"}
-      </button>
+        <button
+          onClick={() => {
+            if (exist) {
+              setExist(false);
+              const updatedWatchlist = context.watchlist.filter(
+                (movie) => movie.movieID !== movieData.id
+              );
+              context.setWatchlist(updatedWatchlist);
+            } else {
+              setExist(true);
+              context.setWatchlist([                ...context.watchlist,                { Title: movieData.title, movieID: movieData.id },              ]);
+            }
+          }}
+        >
+          {exist ? "Remove from watchlist" : "Add to watchlist"}
+        </button>
+      </MoviePoster>
     </CardWrapper>
   );
 }
@@ -56,23 +52,52 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: #14213d;
 `;
 
-// const MoviePoster = styled.img`
-// background-image: url('./assets/defaultPoster.jpg');
-// width: 100px;
-// height: 150px
-// `
-
 const MovieTitle = styled.h3`
-  color: black;
-  font-weight: bold;
+  height: 3rem;
+  width: 90%;
+  color: white;
   text-align: center;
 `;
 
-const AddButton = styled.button`
-  color: green;
-  width: 50px;
-  height: 30px;
+const MoviePoster = styled.div`
+  position: relative;
+  width: 90%;
+  height: 20rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 3rem;
+
+  &:hover {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    button {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  button {
+    color: green;
+    display: none;
+    width: width: 75px;
+    height: 100px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
 `;
