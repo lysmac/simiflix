@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 
@@ -12,13 +13,13 @@ export default function App() {
   );
   const [id, setID] = useLocalStorageState(0, "id");
   const [isSearched, setIsSearched] = useState(false);
-  const [userSearch, setUserSearch] = useState("titanic");
+  const [userSearch, setUserSearch] = useState("");
   const [watchlist, setWatchlist] = useLocalStorageState([], "watchlist");
 
   useEffect(() => {
     async function callApiForID() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=c0f1190bf24e1f667c8c22a047cfa712&query=${userSearch}`
+        `https://api.themoviedb.org/3/search/movie?api_key=c0f1190bf24e1f667c8c22a047cfa712&query=${userSearch}&include_adult=false&with_original_language=en`
       );
       const result = await response.json();
       setID(result.results[0].id);
@@ -29,7 +30,7 @@ export default function App() {
   useEffect(() => {
     async function callApiForMovie() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&include_adult=false&with_original_language=en`
       );
       const result = await response.json();
       setMovie(result);
@@ -40,32 +41,40 @@ export default function App() {
   useEffect(() => {
     async function callApiForRecommendations() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&&include_adult=false&with_original_language=en&page=1`
       );
       const result = await response.json();
       setRecommendations(result);
+      console.log(result);
     }
     callApiForRecommendations();
   }, [movie]);
 
   return (
-    <AppWrapper>
-      <Header
-        setUserSearch={setUserSearch}
-        setIsSearched={setIsSearched}
-        userSearch={userSearch}
-      />
-      <Main>
-        <Outlet
-          context={{
-            movie,
-            recommendations,
-            setWatchlist,
-            watchlist,
-          }}
-        ></Outlet>
-      </Main>
-    </AppWrapper>
+    <ErrorBoundary message="Something went wrong with the page">
+      <AppWrapper>
+        <ErrorBoundary message="Something went wrong with the Header">
+          <Header
+            setUserSearch={setUserSearch}
+            setIsSearched={setIsSearched}
+            userSearch={userSearch}
+          />
+        </ErrorBoundary>
+
+        <Main>
+          <ErrorBoundary message="Something went wrong with the outlet component">
+            <Outlet
+              context={{
+                movie,
+                recommendations,
+                setWatchlist,
+                watchlist,
+              }}
+            ></Outlet>
+          </ErrorBoundary>
+        </Main>
+      </AppWrapper>
+    </ErrorBoundary>
   );
 }
 
