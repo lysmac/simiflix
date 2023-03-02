@@ -1,20 +1,15 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 // TODO: Kolla vilken typ movieData är
 
-interface MovieData {
-  title: string;
-  poster_path: string;
-  // add any other properties here that you expect to receive from the API
-}
-
 interface Props {
-  movieData: MovieData;
+  key: number;
+  title: string;
 }
 
-export default function WatchlistCard({ movieData }: Props) {
+export default function WatchlistCard(props: Props) {
   return (
     <WatchCardWrapper>
       <LeftColumn>
@@ -22,7 +17,7 @@ export default function WatchlistCard({ movieData }: Props) {
         <RemoveButton>Remove</RemoveButton>
       </LeftColumn>
       <LeftColumn>
-        <MovieTitle>Titel: Hitta nemo</MovieTitle>
+        <MovieTitle>{props.title}</MovieTitle>
         <MovieDescription>
           Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           Fugit vel sint provident ducimus? Quaerat, perferendis pariatur harum

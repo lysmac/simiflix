@@ -7,17 +7,20 @@ export default function WatchList() {
   // TODO: Kolla vilken typ context är
   const context: any = useOutletContext();
   const savedMovies = context.watchlist;
-  console.log(savedMovies);
 
   return (
     <Wrapper>
       <h1>Watchlist</h1>
       <MoviesWrapper>
         {savedMovies.map((movie: any) => {
-          return <div key={movie.id}>Titel:{movie.title}</div>;
+          return (
+            <div>
+              <WatchlistCard key={movie.id} title={movie.title} />
+              <div key={movie.id}>Titel:{movie.title}</div>
+            </div>
+          );
         })}
       </MoviesWrapper>
-      <WatchlistCard />
     </Wrapper>
   );
 }
