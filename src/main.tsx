@@ -10,6 +10,7 @@ import HowToUse from "./HowToUse";
 import "./index.css";
 import SearchResult from "./SearchResult";
 import WatchList from "./Watchlist";
+import React from "react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,9 +23,8 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-
-  <RouterProvider router={router} />
-  //{" "}
-  // </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+    //{" "}
+  </React.StrictMode>
 );
