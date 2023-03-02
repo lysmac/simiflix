@@ -12,7 +12,6 @@ export default function App() {
     "recommendations"
   );
   const [id, setID] = useLocalStorageState(0, "id");
-  const [isSearched, setIsSearched] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [watchlist, setWatchlist] = useLocalStorageState([], "watchlist");
 
@@ -54,11 +53,7 @@ export default function App() {
     <ErrorBoundary message="Something went wrong with the page">
       <AppWrapper>
         <ErrorBoundary message="Something went wrong with the Header">
-          <Header
-            setUserSearch={setUserSearch}
-            setIsSearched={setIsSearched}
-            userSearch={userSearch}
-          />
+          <Header setUserSearch={setUserSearch} userSearch={userSearch} />
         </ErrorBoundary>
 
         <Main>

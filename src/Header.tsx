@@ -8,20 +8,14 @@ export default function Header(props: any) {
     <HeaderStyle>
       <StyledNavTitle to="/">Simiflix</StyledNavTitle>
       <SegmentBar>
-
-       
         <SearchbarWrapper>
-
-        <ErrorBoundary message="Something went wrong with searchbar">
-
-          <Searchbar
-            setUserSearch={props.setUserSearch}
-            setIsSearched={props.setIsSearched}
-            userSearch={props.userSearch}
-          />{" "}
- </ErrorBoundary>
+          <ErrorBoundary message="Something went wrong with searchbar">
+            <Searchbar
+              setUserSearch={props.setUserSearch}
+              userSearch={props.userSearch}
+            />{" "}
+          </ErrorBoundary>
         </SearchbarWrapper>
-
 
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
@@ -53,7 +47,6 @@ const StyledNavLink = styled(NavLink)`
   padding: 2rem;
   text-decoration: none;
   position: absolute;
-  
 `;
 
 const StyledNavTitle = styled(NavLink)`
@@ -63,7 +56,6 @@ const StyledNavTitle = styled(NavLink)`
   font-family: rockwell;
   padding: 2rem;
   text-transform: uppercase;
-  
 `;
 
 const SearchbarWrapper = styled.div`
