@@ -60,21 +60,21 @@ const RecommendedMoviesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #14213d;
+  background-color: white;
   width: 100%;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  background-color: #14213d;
+  background-color: white;
   margin: 2rem 0;
   width: 80%;
   margin: 2rem auto;
 `;
 
 const InnerWrapper = styled.div`
-  background-color: #14213d;
+  background-color: white;
   width: 100%;
   display: flex;
   flex-direction: row;

@@ -113,6 +113,6 @@ const AppWrapper = styled.div`
 `;
 
 const Main = styled.div`
-  background-color: #14213d;
+  background-color: white;
   height: calc(100vh - 250px);
 `;

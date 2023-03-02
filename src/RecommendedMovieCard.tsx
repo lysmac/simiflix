@@ -11,11 +11,14 @@ export default function RecommendedMovieCard({ movieData }: Props) {
 
   return (
     <CardWrapper>
-      <MoviePoster
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movieData.poster_path})`,
-        }}
-      >
+      <MoviePoster>
+        <img
+          src={`https://image.tmdb.org/t/p/w1280/${movieData.poster_path}`}
+          alt={movieData.title}
+          style={{ height: "100%", objectFit: "cover" }}
+        />
+      </MoviePoster>
+      <ButtonWrapper>
         <Button
           onClick={() => {
             if (exist) {
@@ -38,12 +41,12 @@ export default function RecommendedMovieCard({ movieData }: Props) {
             }
           }}
         >
-          {exist ? "Remove from watchlist" : "Add to watchlist"}
+          {exist ? "Remove" : "Add to watchlist"}
         </Button>
-      </MoviePoster>
+      </ButtonWrapper>
       <MovieDetails>
         <MovieTitle> {movieData.title} </MovieTitle>
-        <MovieTagline>{movieData.overview}</MovieTagline>
+        <MovieOverview>{movieData.overview}</MovieOverview>
       </MovieDetails>
     </CardWrapper>
   );
@@ -51,23 +54,45 @@ export default function RecommendedMovieCard({ movieData }: Props) {
 
 const CardWrapper = styled.div`
   width: 100%;
-  height: 10rem;
+  height: auto;
   display: flex;
   flex-direction: row;
-  background-color: white;
-  border-bottom: 1px solid black;
-  margin: 0 0 0 3rem;
+  background-color: #e5e5e5;
+  margin: 0 0 2rem 3rem;
 `;
 
 const MoviePoster = styled.div`
   width: 30%;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  color: black;
+  display: block;
+  width: 8rem;
+  height: 3rem;
+  background-color: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
 `;
 
 const MovieDetails = styled.div`
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,16 +106,6 @@ const MovieTitle = styled.h3`
   text-align: center;
 `;
 
-const MovieTagline = styled.p`
+const MovieOverview = styled.p`
   color: black;
-`;
-
-const Button = styled.button`
-  color: green;
-  display: block;
-  width: 100%
-  height: 3rem;
-  background-color: red;
-  border: none;
-  cursor: pointer;
 `;

@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   background-color: white;
   border: #14213d solid 2rem; 
-  height: calc(100vh - 250px);
+  height: auto;
   `
   const TitleWrapper = styled.div`
   text-align: center;
