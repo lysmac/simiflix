@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import ErrorBoundary from "./ErrorBoundary";
 import Searchbar from "./Searchbar";
 
 export default function Header(props: any) {
@@ -7,14 +8,21 @@ export default function Header(props: any) {
     <HeaderStyle>
       <StyledNavTitle to="/">Simiflix</StyledNavTitle>
       <SegmentBar>
+
        
         <SearchbarWrapper>
+
+        <ErrorBoundary message="Something went wrong with searchbar">
+
           <Searchbar
             setUserSearch={props.setUserSearch}
             setIsSearched={props.setIsSearched}
             userSearch={props.userSearch}
           />{" "}
+ </ErrorBoundary>
         </SearchbarWrapper>
+
+
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
     </HeaderStyle>
