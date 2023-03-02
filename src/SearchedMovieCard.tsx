@@ -1,17 +1,5 @@
 import styled from "styled-components";
-import { useLocalStorageState } from "./hooks/useLocalStorageState";
-import React from "react";
-import { useOutletContext } from "react-router-dom";
-
-interface MovieData {
-  title: string;
-  poster_path: string;
-  tagline: string;
-}
-
-interface Props {
-  movieData: MovieData;
-}
+import { Props } from "./Interfaces";
 
 export default function SearchedMovieCard({ movieData }: Props) {
   return (
