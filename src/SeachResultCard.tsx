@@ -7,7 +7,10 @@ import { useOutletContext } from "react-router-dom";
 
 interface MovieData {
   title: string;
-  poster_path: string;
+  posterPath: string;
+  id: number;
+  voteAverage: number;
+  overview: string;
   // add any other properties here that you expect to receive from the API
 }
 
@@ -40,7 +43,13 @@ export default function SearchResultCard({ movieData }: Props) {
             setExist(true);
             context.setWatchlist([
               ...context.watchlist,
-              { title: movieData.title, movieID: movieData.id },
+              {
+                title: movieData.title,
+                movieID: movieData.id,
+                posterurl: movieData.poster_path,
+                voterating: movieData.vote_average,
+                overview: movieData.overview,
+              },
             ]);
           }
         }}

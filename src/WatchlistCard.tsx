@@ -7,18 +7,27 @@ import { useOutletContext } from "react-router-dom";
 interface Props {
   key: number;
   title: string;
+  overview: string;
+  posterurl: string;
+  voterating: number;
 }
 
 export default function WatchlistCard(props: Props) {
   return (
     <WatchCardWrapper>
       <LeftColumn>
-        <img src="src/assets/defaultPoster.jpg" height="150px" />
+        <img
+          src={`https://image.tmdb.org/t/p/w1280/${props.posterurl}`}
+          height="190px"
+        />{" "}
         <RemoveButton>Remove</RemoveButton>
       </LeftColumn>
       <LeftColumn>
-        <MovieTitle>{props.title}</MovieTitle>
+        <MovieTitle>
+          {props.title} {props.voterating}
+        </MovieTitle>
         <MovieDescription>
+          {props.overview}
           Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           Fugit vel sint provident ducimus? Quaerat, perferendis pariatur harum
           consectetur provident maxime illo id quae nesciunt quidem numquam,
@@ -40,7 +49,6 @@ const WatchCardWrapper = styled.div`
 const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
 `;
 
 const MovieTitle = styled.h2`
@@ -54,7 +62,6 @@ const MovieDescription = styled.p`
 const RemoveButton = styled.button`
   color: black;
   border: none;
-
   width: 100%;
   height: 30px;
   background: red;

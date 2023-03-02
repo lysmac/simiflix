@@ -7,17 +7,20 @@ export default function WatchList() {
   // TODO: Kolla vilken typ context är
   const context: any = useOutletContext();
   const savedMovies = context.watchlist;
-
+  console.log(context.watchlist);
   return (
     <Wrapper>
       <h1>Watchlist</h1>
       <MoviesWrapper>
         {savedMovies.map((movie: any) => {
           return (
-            <div>
-              <WatchlistCard key={movie.id} title={movie.title} />
-              <div key={movie.id}>Titel:{movie.title}</div>
-            </div>
+            <WatchlistCard
+              key={movie.id}
+              title={movie.title}
+              posterurl={movie.posterurl}
+              voterating={movie.voterating}
+              overview={movie.overview}
+            />
           );
         })}
       </MoviesWrapper>
@@ -39,6 +42,6 @@ const MoviesWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  gap: 3rem;
+  gap: 1rem;
   background-color: white;
 `;
