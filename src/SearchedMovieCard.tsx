@@ -26,24 +26,7 @@ export default function SearchedMovieCard({ movieData }: Props) {
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movieData.poster_path})`,
         }}
-      >
-      </MoviePoster>
-      <Button
-          onClick={() => {
-            if (exist) {
-              setExist(false);
-              const updatedWatchlist = context.watchlist.filter(
-                (movie) => movie.movieID !== movieData.id
-              );
-              context.setWatchlist(updatedWatchlist);
-            } else {
-              setExist(true);
-              context.setWatchlist([                ...context.watchlist,                { Title: movieData.title, movieID: movieData.id },              ]);
-            }
-          }}
-        >
-          {exist ? "Remove from watchlist" : "Add to watchlist"}
-        </Button>
+      ></MoviePoster>
     </CardWrapper>
   );
 }
@@ -70,9 +53,9 @@ const MoviePoster = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-   `;
+`;
 
-   const Button = styled.button`
+const Button = styled.button`
    color: green;
    display: block;
    width: 100%
