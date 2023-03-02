@@ -25,7 +25,7 @@ export default function Searchbar(props: any) {
           />
         </div>
         <NavLink to="./searchresult">
-          <SubmitButton type="submit">Go</SubmitButton>
+          <SubmitButton type="submit">Search</SubmitButton>
         </NavLink>
       </Form>
     </StyledSearchbar>
