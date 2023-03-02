@@ -56,7 +56,13 @@ const MovieDescription = styled.p`
 const RemoveButton = styled.button`
   color: black;
   border: none;
-  background: red;
+  background: #e5e5e5;
   width: 100%;
   height: 30px;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
 `;
