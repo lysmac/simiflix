@@ -29,6 +29,7 @@ export default function SearchResult() {
             <SearchedMovieCard movieData={searchedMovie} />
           </SearchedMovieContainer>
           <RecommendedMoviesContainer>
+            <RecommendedMoviesHeader>Recommendations based on your search</RecommendedMoviesHeader>
             <RecommendedMovieCard movieData={recommendedMovieOne} />
             <RecommendedMovieCard movieData={recommendedMovieTwo} />
             <RecommendedMovieCard movieData={recommendedMovieThree} />
@@ -63,6 +64,11 @@ const RecommendedMoviesContainer = styled.div`
   background-color: white;
   width: 100%;
 `;
+
+const RecommendedMoviesHeader = styled.h1`
+font-size: 20px;
+font-weight: 600;
+`
 
 const Wrapper = styled.div`
   display: flex;
