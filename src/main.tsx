@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route index element={<HowToUse />} />
       <Route path="watchlist" element={<WatchList />} />
       <Route path="searchresult" element={<SearchResult />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Route>
   )
 );
