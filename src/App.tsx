@@ -1,5 +1,5 @@
-import { ContextType, useEffect, useState } from "react";
-import { NavLink, Outlet, useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
@@ -24,7 +24,7 @@ export default function App() {
       setID(result.results[0].id);
     }
     callApiForID();
-  }, [isSearched]);
+  }, [userSearch]);
 
   useEffect(() => {
     async function callApiForMovie() {
@@ -50,10 +50,19 @@ export default function App() {
 
   return (
     <AppWrapper>
-      <Header isSearched={isSearched} setIsSearched={setIsSearched} />
+      <Header
+        setUserSearch={setUserSearch}
+        setIsSearched={setIsSearched}
+        userSearch={userSearch}
+      />
       <Main>
         <Outlet
-          context={{ movie, recommendations, setWatchlist, watchlist }}
+          context={{
+            movie,
+            recommendations,
+            setWatchlist,
+            watchlist,
+          }}
         ></Outlet>
       </Main>
     </AppWrapper>
