@@ -36,13 +36,7 @@ export default function WatchlistCard(props: Props) {
         <MovieTitle>
           {props.title} {props.voterating}
         </MovieTitle>
-        <MovieDescription>
-          {props.overview}
-          Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Fugit vel sint provident ducimus? Quaerat, perferendis pariatur harum
-          consectetur provident maxime illo id quae nesciunt quidem numquam,
-          neque repellendus a beatae.
-        </MovieDescription>
+        <MovieDescription>{props.overview}</MovieDescription>
       </LeftColumn>
     </WatchCardWrapper>
   );
