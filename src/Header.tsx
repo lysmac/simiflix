@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ErrorBoundary from "./ErrorBoundary";
+import { HeaderProps } from "./Interfaces";
 import Searchbar from "./Searchbar";
 
-export default function Header(props: any) {
+export default function Header(props: HeaderProps) {
   return (
     <HeaderStyle>
       <StyledNavTitle to="/">Simiflix</StyledNavTitle>

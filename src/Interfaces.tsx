@@ -83,7 +83,6 @@ export interface MovieData {
   title: string;
   poster_path: string;
   id: number;
-  voteAverage: number;
   overview: string;
 }
 
@@ -96,4 +95,9 @@ export interface AppContextType {
   recommendations: Recommendations;
   setWatchlist: (watchlist: any[]) => void;
   watchlist: any[];
+}
+
+export interface HeaderProps {
+  setUserSearch: (search: string) => void;
+  userSearch: string;
 }

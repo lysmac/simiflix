@@ -4,7 +4,6 @@ import SearchedMovieCard from "./SearchedMovieCard";
 import RecommendedMovieCard from "./RecommendedMovieCard";
 
 export default function SearchResult() {
-  // TODO: Kolla vilken typ context är
   const context: any = useOutletContext();
 
   let searchedMovie,
