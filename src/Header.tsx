@@ -7,12 +7,14 @@ export default function Header(props: any) {
     <HeaderStyle>
       <StyledNavTitle to="/">Simiflix</StyledNavTitle>
       <SegmentBar>
-        <H2>Welcome!</H2>
-        <Searchbar
-          setUserSearch={props.setUserSearch}
-          setIsSearched={props.setIsSearched}
-          userSearch={props.userSearch}
-        />{" "}
+       
+        <SearchbarWrapper>
+          <Searchbar
+            setUserSearch={props.setUserSearch}
+            setIsSearched={props.setIsSearched}
+            userSearch={props.userSearch}
+          />{" "}
+        </SearchbarWrapper>
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
       </SegmentBar>
     </HeaderStyle>
@@ -25,6 +27,7 @@ const HeaderStyle = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #14213d;
+  position: relative;
 `;
 
 const SegmentBar = styled.div`
@@ -36,14 +39,13 @@ const SegmentBar = styled.div`
   width: 100%;
 `;
 
-const H2 = styled.h2`
-  padding: 2rem;
-`;
-
 const StyledNavLink = styled(NavLink)`
+  color: black;
   font-size: 2rem;
   padding: 2rem;
   text-decoration: none;
+  position: absolute;
+  
 `;
 
 const StyledNavTitle = styled(NavLink)`
@@ -52,4 +54,12 @@ const StyledNavTitle = styled(NavLink)`
   font-size: 60px;
   font-family: rockwell;
   padding: 2rem;
+  text-transform: uppercase;
+  
+`;
+
+const SearchbarWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 `;
