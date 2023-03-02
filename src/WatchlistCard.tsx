@@ -2,17 +2,18 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
-// TODO: Kolla vilken typ movieData är
-
 interface Props {
   key: number;
   title: string;
   overview: string;
   posterurl: string;
   voterating: number;
+  id: number;
 }
 
 export default function WatchlistCard(props: Props) {
+  const context: any = useOutletContext();
+
   return (
     <WatchCardWrapper>
       <LeftColumn>
@@ -20,7 +21,16 @@ export default function WatchlistCard(props: Props) {
           src={`https://image.tmdb.org/t/p/w1280/${props.posterurl}`}
           height="190px"
         />{" "}
-        <RemoveButton>Remove</RemoveButton>
+        <RemoveButton
+          onClick={() => {
+            const updatedWatchlist = context.watchlist.filter(
+              (movie) => movie.movieID !== props.id
+            );
+            context.setWatchlist(updatedWatchlist);
+          }}
+        >
+          Remove
+        </RemoveButton>
       </LeftColumn>
       <LeftColumn>
         <MovieTitle>
@@ -60,11 +70,9 @@ const MovieDescription = styled.p`
 `;
 
 const RemoveButton = styled.button`
-  color: black;
-  border: none;
+  //   color: black;
+  //   border: none;
+  //   background: red;
   width: 100%;
   height: 30px;
-  background: red;
 `;
-
-const poster = styled.img;

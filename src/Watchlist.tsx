@@ -7,7 +7,6 @@ export default function WatchList() {
   // TODO: Kolla vilken typ context är
   const context: any = useOutletContext();
   const savedMovies = context.watchlist;
-  console.log(context.watchlist);
   return (
     <Wrapper>
       <h1>Watchlist</h1>
@@ -15,7 +14,8 @@ export default function WatchList() {
         {savedMovies.map((movie: any) => {
           return (
             <WatchlistCard
-              key={movie.id}
+              key={movie.movieID}
+              id={movie.movieID}
               title={movie.title}
               posterurl={movie.posterurl}
               voterating={movie.voterating}
