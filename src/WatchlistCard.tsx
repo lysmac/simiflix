@@ -70,9 +70,9 @@ const MovieDescription = styled.p`
 `;
 
 const RemoveButton = styled.button`
-  //   color: black;
-  //   border: none;
-  //   background: red;
+  color: black;
+  border: none;
+  background: red;
   width: 100%;
   height: 30px;
 `;
