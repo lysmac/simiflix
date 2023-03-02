@@ -19,14 +19,16 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #14213d;
+  background-color: white;
 `;
 
 const MovieTitle = styled.h3`
   height: 2rem;
-  width: 100%;
-  color: white;
+  width: 90%;
+  color: black;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const MoviePoster = styled.div`
