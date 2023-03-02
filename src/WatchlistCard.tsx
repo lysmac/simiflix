@@ -1,18 +1,9 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { AppContextType, RecommendedMovie } from "./Interfaces";
 
-interface Props {
-  key: number;
-  title: string;
-  overview: string;
-  posterurl: string;
-  voterating: number;
-  id: number;
-}
-
-export default function WatchlistCard(props: Props) {
-  const context: any = useOutletContext();
+export default function WatchlistCard(props: RecommendedMovie) {
+  const context: AppContextType = useOutletContext();
 
   return (
     <WatchCardWrapper>
@@ -33,9 +24,7 @@ export default function WatchlistCard(props: Props) {
         </RemoveButton>
       </LeftColumn>
       <LeftColumn>
-        <MovieTitle>
-          {props.title} {props.voterating}
-        </MovieTitle>
+        <MovieTitle>{props.title}</MovieTitle>
         <MovieDescription>{props.overview}</MovieDescription>
       </LeftColumn>
     </WatchCardWrapper>

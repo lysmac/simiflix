@@ -4,15 +4,46 @@ import styled from "styled-components";
 import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
+import { InterfaceMovie, Recommendations } from "./Interfaces";
 
 export default function App() {
-  const [movie, setMovie] = useLocalStorageState(0, "movie");
-  const [recommendations, setRecommendations] = useLocalStorageState<string[]>(
-    [],
-    "recommendations"
+  const [movie, setMovie] = useLocalStorageState<InterfaceMovie>(
+    {
+      adult: false,
+      backdrop_path: "",
+      belongs_to_collection: null,
+      budget: 0,
+      genres: [],
+      homepage: "",
+      id: 0,
+      imdb_id: "",
+      original_language: "",
+      original_title: "",
+      overview: "",
+      popularity: 0,
+      poster_path: null,
+      production_companies: [],
+      production_countries: [],
+      release_date: new Date(),
+      revenue: 0,
+      runtime: 0,
+      spoken_languages: [],
+      status: "",
+      tagline: "",
+      title: "",
+      video: false,
+      vote_average: 0,
+      vote_count: 0,
+    },
+    "movie"
   );
+  const [recommendations, setRecommendations] =
+    useLocalStorageState<Recommendations>(
+      { page: 0, results: [], total_pages: 0, total_results: 0 },
+      "recommendations"
+    );
+
   const [id, setID] = useLocalStorageState(0, "id");
-  const [isSearched, setIsSearched] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [watchlist, setWatchlist] = useLocalStorageState([], "watchlist");
 
@@ -22,7 +53,9 @@ export default function App() {
         `https://api.themoviedb.org/3/search/movie?api_key=c0f1190bf24e1f667c8c22a047cfa712&query=${userSearch}&include_adult=false&with_original_language=en`
       );
       const result = await response.json();
-      setID(result.results[0].id);
+      if (result.results && result.results.length > 0) {
+        setID(result.results[0].id);
+      }
     }
     callApiForID();
   }, [userSearch]);
@@ -45,7 +78,6 @@ export default function App() {
       );
       const result = await response.json();
       setRecommendations(result);
-      console.log(result);
     }
     callApiForRecommendations();
   }, [movie]);
@@ -54,11 +86,7 @@ export default function App() {
     <ErrorBoundary message="Something went wrong with the page">
       <AppWrapper>
         <ErrorBoundary message="Something went wrong with the Header">
-          <Header
-            setUserSearch={setUserSearch}
-            setIsSearched={setIsSearched}
-            userSearch={userSearch}
-          />
+          <Header setUserSearch={setUserSearch} userSearch={userSearch} />
         </ErrorBoundary>
 
         <Main>

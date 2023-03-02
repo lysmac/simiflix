@@ -1,23 +1,22 @@
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
+import { AppContextType } from "./Interfaces";
 import WatchlistCard from "./WatchlistCard";
 
 export default function WatchList() {
-  // TODO: Kolla vilken typ context är
-  const context: any = useOutletContext();
+  const context: AppContextType = useOutletContext();
   const savedMovies = context.watchlist;
   return (
     <Wrapper>
       <h1>Watchlist</h1>
       <MoviesWrapper>
-        {savedMovies.map((movie: any) => {
+        {savedMovies.map((movie) => {
           return (
             <WatchlistCard
               key={movie.movieID}
               id={movie.movieID}
               title={movie.title}
               posterurl={movie.posterurl}
-              voterating={movie.voterating}
               overview={movie.overview}
             />
           );

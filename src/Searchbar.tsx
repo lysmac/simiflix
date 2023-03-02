@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { HeaderProps } from "./Interfaces";
 
-// TODO: type på props
-
-export default function Searchbar(props: any) {
+export default function Searchbar(props: HeaderProps) {
   return (
     <StyledSearchbar>
       <Form
@@ -31,13 +30,12 @@ export default function Searchbar(props: any) {
     </StyledSearchbar>
   );
 }
-const StyledSearchbar = styled.div`
-  `;
-  
-  const Form = styled.form`
+const StyledSearchbar = styled.div``;
+
+const Form = styled.form`
   display: flex;
   align-items: center;
-`
+`;
 
 const SubmitButton = styled.button`
   margin: 0 0.5rem;
@@ -50,8 +48,7 @@ const SubmitButton = styled.button`
 `;
 
 const Input = styled.input`
-height: 1.6rem;
-width: 12rem;
-border: black 2px solid;
-`
-
+  height: 1.6rem;
+  width: 12rem;
+  border: black 2px solid;
+`;
