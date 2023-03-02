@@ -3,7 +3,6 @@ import styled from "styled-components";
 import WatchlistCard from "./WatchlistCard";
 
 export default function WatchList() {
-  // TODO: Kolla vilken typ context är
   const context: any = useOutletContext();
   const savedMovies = context.watchlist;
   return (
@@ -17,7 +16,6 @@ export default function WatchList() {
               id={movie.movieID}
               title={movie.title}
               posterurl={movie.posterurl}
-              voterating={movie.voterating}
               overview={movie.overview}
             />
           );

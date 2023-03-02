@@ -4,13 +4,45 @@ import styled from "styled-components";
 import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
+import { InterfaceMovie, Recommendations } from "./Interfaces";
 
 export default function App() {
-  const [movie, setMovie] = useLocalStorageState(0, "movie");
-  const [recommendations, setRecommendations] = useLocalStorageState<string[]>(
-    [],
-    "recommendations"
+  const [movie, setMovie] = useLocalStorageState<InterfaceMovie>(
+    {
+      adult: false,
+      backdrop_path: "",
+      belongs_to_collection: null,
+      budget: 0,
+      genres: [],
+      homepage: "",
+      id: 0,
+      imdb_id: "",
+      original_language: "",
+      original_title: "",
+      overview: "",
+      popularity: 0,
+      poster_path: null,
+      production_companies: [],
+      production_countries: [],
+      release_date: new Date(),
+      revenue: 0,
+      runtime: 0,
+      spoken_languages: [],
+      status: "",
+      tagline: "",
+      title: "",
+      video: false,
+      vote_average: 0,
+      vote_count: 0,
+    },
+    "movie"
   );
+  const [recommendations, setRecommendations] =
+    useLocalStorageState<Recommendations>(
+      { page: 0, results: [], total_pages: 0, total_results: 0 },
+      "recommendations"
+    );
+
   const [id, setID] = useLocalStorageState(0, "id");
   const [userSearch, setUserSearch] = useState("");
   const [watchlist, setWatchlist] = useLocalStorageState([], "watchlist");

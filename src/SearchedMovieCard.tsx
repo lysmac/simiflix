@@ -14,11 +14,6 @@ interface Props {
 }
 
 export default function SearchedMovieCard({ movieData }: Props) {
-  const context: any = useOutletContext();
-  const [exist, setExist] = React.useState(() => {
-    return context.watchlist.some((movie) => movie.movieID === movieData.id);
-  });
-
   return (
     <CardWrapper>
       <MovieTitle> {movieData.title} </MovieTitle>

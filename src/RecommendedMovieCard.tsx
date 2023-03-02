@@ -1,23 +1,10 @@
 import styled from "styled-components";
-import { useLocalStorageState } from "./hooks/useLocalStorageState";
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-
-interface MovieData {
-  title: string;
-  posterPath: string;
-  id: number;
-  voteAverage: number;
-  overview: string;
-  // add any other properties here that you expect to receive from the API
-}
-
-interface Props {
-  movieData: MovieData;
-}
+import { AppContextType, Props } from "./Interfaces";
 
 export default function RecommendedMovieCard({ movieData }: Props) {
-  const context: any = useOutletContext();
+  const context: AppContextType = useOutletContext();
   const [exist, setExist] = React.useState(() => {
     return context.watchlist.some((movie) => movie.movieID === movieData.id);
   });
@@ -45,7 +32,6 @@ export default function RecommendedMovieCard({ movieData }: Props) {
                   title: movieData.title,
                   movieID: movieData.id,
                   posterurl: movieData.poster_path,
-                  voterating: movieData.vote_average,
                   overview: movieData.overview,
                 },
               ]);
