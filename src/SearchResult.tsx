@@ -40,7 +40,11 @@ export default function SearchResult() {
   } else {
     return (
       <Wrapper>
-        <InnerWrapper>Något gick fel</InnerWrapper>
+        <InnerWrapper>
+          <RecommendedMoviesContainer>
+            <FailedSearch>Kunde inte hitta något.</FailedSearch>
+          </RecommendedMoviesContainer>
+        </InnerWrapper>
       </Wrapper>
     );
   }
@@ -76,5 +80,10 @@ const InnerWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+`;
+
+const FailedSearch = styled.div`
+  background-color: white;
+  font-size: 2rem;
+  padding: 2rem;
 `;
