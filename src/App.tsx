@@ -30,28 +30,22 @@ export default function App() {
 
   useEffect(() => {
     async function callApiForMovie() {
-      if (id !== 0) {
-        // add this condition to check if id is defined
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&include_adult=false&with_original_language=en`
-        );
-        const result = await response.json();
-        setMovie(result);
-      }
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&include_adult=false&with_original_language=en`
+      );
+      const result = await response.json();
+      setMovie(result);
     }
     callApiForMovie();
   }, [id]);
 
   useEffect(() => {
     async function callApiForRecommendations() {
-      if (id !== 0) {
-        // add this condition to check if id is defined
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&&include_adult=false&with_original_language=en&page=1`
-        );
-        const result = await response.json();
-        setRecommendations(result);
-      }
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=c0f1190bf24e1f667c8c22a047cfa712&language=en-US&&include_adult=false&with_original_language=en&page=1`
+      );
+      const result = await response.json();
+      setRecommendations(result);
     }
     callApiForRecommendations();
   }, [movie]);
