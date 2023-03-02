@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchResultCard from "./SeachResultCard";
+import SearchResultCard from "./SearchedMovieCard";
 
 export default function WatchList() {
   return (

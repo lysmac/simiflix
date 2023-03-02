@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
-import SearchResultCard from "./SeachResultCard";
+import SearchedMovieCard from "./SearchedMovieCard";
+import RecommendedMovieCard from "./RecommendedMovieCard";
 
 export default function SearchResult() {
   // TODO: Kolla vilken typ context är
@@ -25,15 +26,14 @@ export default function SearchResult() {
     return (
       <Wrapper>
         <InnerWrapper>
-          <UpperResultContainer>
-            <SearchResultCard movieData={searchedMovie} />
-            <SearchResultCard movieData={recommendedMovieOne} />
-            <SearchResultCard movieData={recommendedMovieTwo} />
-            <SearchResultCard movieData={recommendedMovieThree} />
-          </UpperResultContainer>
-          {/* <LowerResultContainer>
-          <SearchResultCard />
-        </LowerResultContainer> */}
+          <SearchedMovieContainer>
+            <SearchedMovieCard movieData={searchedMovie} />
+          </SearchedMovieContainer>
+          <RecommendedMoviesContainer>
+            <RecommendedMovieCard movieData={recommendedMovieOne} />
+            <RecommendedMovieCard movieData={recommendedMovieTwo} />
+            <RecommendedMovieCard movieData={recommendedMovieThree} />
+          </RecommendedMoviesContainer>
         </InnerWrapper>
       </Wrapper>
     );
@@ -45,26 +45,36 @@ export default function SearchResult() {
     );
   }
 }
+
+const SearchedMovieContainer = styled.div`
+  display: flex;
+  justify-content: left;
+  margin-bottom: 2rem;
+`;
+
+const RecommendedMoviesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #14213d;
+  width: 100%;
+`;
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: #14213d;
   margin: 2rem 0;
+  width: 80%;
+  margin: 2rem auto;
 `;
 
 const InnerWrapper = styled.div`
   background-color: #14213d;
-  width: 80%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-`;
-
-const UpperResultContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const LowerResultContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  
 `;
