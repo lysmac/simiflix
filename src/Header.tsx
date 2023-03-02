@@ -1,24 +1,33 @@
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ErrorBoundary from "./ErrorBoundary";
 import { HeaderProps } from "./Interfaces";
 import Searchbar from "./Searchbar";
+import { useState } from "react";
 
 export default function Header(props: HeaderProps) {
+  const [isSpooky, setIsSpooky] = useState(false);
+
   return (
     <HeaderStyle>
-      <StyledNavTitle to="/">Simiflix</StyledNavTitle>
+      <StyledNavTitle to="/" spooky={isSpooky}>
+        Simiflix
+      </StyledNavTitle>
       <SegmentBar>
         <SearchbarWrapper>
           <ErrorBoundary message="Something went wrong with searchbar">
             <Searchbar
               setUserSearch={props.setUserSearch}
               userSearch={props.userSearch}
-            />{" "}
+            />
           </ErrorBoundary>
         </SearchbarWrapper>
 
         <StyledNavLink to="./watchlist">Watchlist</StyledNavLink>
+
+        <SpookyButton onClick={() => setIsSpooky(!isSpooky)}>
+          👻 🔴
+        </SpookyButton>
       </SegmentBar>
     </HeaderStyle>
   );
@@ -50,9 +59,9 @@ const StyledNavLink = styled(NavLink)`
   position: absolute;
 `;
 
-const StyledNavTitle = styled(NavLink)`
+const StyledNavTitle = styled(NavLink)<{ spooky: boolean }>`
   text-decoration: none;
-  color: #fca311;
+  color: ${({ spooky }) => (spooky ? "red" : "#fca311")};
   font-size: 60px;
   font-family: rockwell;
   padding: 2rem;
@@ -63,4 +72,14 @@ const SearchbarWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
+`;
+
+const SpookyButton = styled.button`
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
 `;

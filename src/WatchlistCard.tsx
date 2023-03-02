@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { AppContextType, RecommendedMovie } from "./Interfaces";
 
