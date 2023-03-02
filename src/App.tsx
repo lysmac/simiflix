@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 import { useLocalStorageState } from "./hooks/useLocalStorageState";
 
@@ -50,23 +51,30 @@ export default function App() {
   }, [movie]);
 
   return (
-    <AppWrapper>
-      <Header
-        setUserSearch={setUserSearch}
-        setIsSearched={setIsSearched}
-        userSearch={userSearch}
-      />
-      <Main>
-        <Outlet
-          context={{
-            movie,
-            recommendations,
-            setWatchlist,
-            watchlist,
-          }}
-        ></Outlet>
-      </Main>
-    </AppWrapper>
+    <ErrorBoundary message="Something went wrong with the page">
+      <AppWrapper>
+        <ErrorBoundary message="Something went wrong with the Header">
+          <Header
+            setUserSearch={setUserSearch}
+            setIsSearched={setIsSearched}
+            userSearch={userSearch}
+          />
+        </ErrorBoundary>
+
+        <Main>
+          <ErrorBoundary message="Something went wrong with the outlet component">
+            <Outlet
+              context={{
+                movie,
+                recommendations,
+                setWatchlist,
+                watchlist,
+              }}
+            ></Outlet>
+          </ErrorBoundary>
+        </Main>
+      </AppWrapper>
+    </ErrorBoundary>
   );
 }
 

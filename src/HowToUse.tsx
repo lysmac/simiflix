@@ -15,7 +15,7 @@ export default function HowToUse() {
         <SectionTitle>Watchlist</SectionTitle>
         <P>
           Like what you see? You can add the movies you find interesting to your watchlist by pressing the add button.
-          You can acces your watchlist in the upper right corner. 
+          You can acces your watchlist in the upper left corner. 
           
         </P>
       </TextWrapper>

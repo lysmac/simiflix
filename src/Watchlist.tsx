@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
-import SearchResultCard from "./SeachResultCard";
+import SearchResultCard from "./SearchedMovieCard";
 import WatchlistCard from "./WatchlistCard";
 
 export default function WatchList() {
