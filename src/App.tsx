@@ -44,7 +44,6 @@ export default function App() {
       );
       const result = await response.json();
       setRecommendations(result);
-      console.log(result);
     }
     callApiForRecommendations();
   }, [movie]);
