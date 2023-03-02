@@ -10,9 +10,10 @@ export default function Header(props: HeaderProps) {
 
   return (
     <HeaderStyle>
-      <StyledNavTitle to="/" spooky={isSpooky}>
+      <StyledNavTitle to="/" spooky={isSpooky ? "true" : "false"}>
         Simiflix
       </StyledNavTitle>
+
       <SegmentBar>
         <SearchbarWrapper>
           <ErrorBoundary message="Something went wrong with searchbar">
@@ -59,9 +60,9 @@ const StyledNavLink = styled(NavLink)`
   position: absolute;
 `;
 
-const StyledNavTitle = styled(NavLink)<{ spooky: boolean }>`
+const StyledNavTitle = styled(NavLink)<{ spooky?: string }>`
   text-decoration: none;
-  color: ${({ spooky }) => (spooky ? "red" : "#fca311")};
+  color: ${({ spooky }) => (spooky === "true" ? "red" : "#fca311")};
   font-size: 60px;
   font-family: rockwell;
   padding: 2rem;
@@ -82,4 +83,7 @@ const SpookyButton = styled.button`
   background-color: #333;
   color: #fff;
   font-size: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
