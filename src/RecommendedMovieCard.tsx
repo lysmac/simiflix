@@ -9,6 +9,10 @@ export default function RecommendedMovieCard({ movieData }: Props) {
     return context.watchlist.some((movie) => movie.movieID === movieData.id);
   });
 
+  React.useEffect(() => {
+    setExist(context.watchlist.some((movie) => movie.movieID === movieData.id));
+  }, [context.watchlist, movieData.id]);
+
   return (
     <CardWrapper>
       <MoviePoster>
