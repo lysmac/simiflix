@@ -50,6 +50,6 @@ För att bygga projektet så behöver du skriva `npm run build`. Vill du testa a
 
 ## Demo link
 
-[SIMIFLIX på Netlify](https://resonant-tapioca-18b934.netlify.app/)
+[SIMIFLIX på Netlify](https://simiflix.netlify.app/)
 
 ###
